@@ -16,6 +16,10 @@ useEffect(() => {
       name: character.name,
       species: character.species,
       image: character.image,
+      gender: character.gender,
+      status: character.status,
+      origin: character.origin.name,
+      location: character.location.name
     }));
 
     setCharacters(allCharacters)
@@ -31,7 +35,7 @@ return (
       <h1>Rick and Morty Characters</h1>
    
       {characters.map((char, index) => (
-    <Card key={index} name={char.name} species={char.species} image={char.image}/>))
+    <Card key={index} name={char.name} species={char.species} image={char.image} gender={char.gender} status={char.status} origin={char.origin} location={char.location}/>))
       }
     </div>
       

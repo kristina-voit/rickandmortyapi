@@ -3,13 +3,18 @@ import { useState } from "react";
 import "../App.css"
 
 
-function Card({name, species, image}) {
+function Card({name, species, image, gender, status, origin, location}) {
     
 
     function Content({ contentVisibility }) {
         const contentClass = contentVisibility ? "" : "hidden";
         
-        return <article className={contentClass}>info zum wegtogglen</article>;
+        return <article className={contentClass}>
+            <div>{gender}</div>
+            <div>{status}</div>
+            <div>{origin}</div>
+            <div>{location}</div>
+            </article>;
       }
 
       function toggleContent() {
