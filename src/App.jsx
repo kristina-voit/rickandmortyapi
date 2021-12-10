@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import Card from './Components/Card'
 
 import './App.css'
 
 function App() {
 const [characters, setCharacters] = useState([]);
-console.log(characters)
+
 useEffect(() => {
   fetch('https://rickandmortyapi.com/api/character')
   .then((response) => response.json())
@@ -20,30 +21,21 @@ useEffect(() => {
     setCharacters(allCharacters)
 
   });
-}, []);
-
-function addTodo(todo) {
-  setCharacters([...todos, todo]);
 }
+, []);
 
 
 
 return (
     <div className="App">
       <h1>Rick and Morty Characters</h1>
-     
-     <div>TEST</div>
-     
-     
-      {/*{characters &&
-        characters.map((characters, index) => (
-          <Card key={index} name={character.name} species={character.species} />
-        ))} */}
+   
+      {characters.map((char, index) => (
+    <Card key={index} name={char.name} species={char.species} image={char.image}/>))
+      }
     </div>
       
   )
 }
 
 export default App
-
-
