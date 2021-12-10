@@ -11,10 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-test {
-  background-color: rgba(250, 128, 114, 0.557);
-}
-test:hover {
-  background-color: hotpink;
-}

@@ -1,7 +1,21 @@
 import styled from "styled-components";
+import { useState } from "react";
+import "../App.css"
+
+
 function Card({name, species, image}) {
     
-   
+
+    function Content({ contentVisibility }) {
+        const contentClass = contentVisibility ? "" : "hidden";
+        
+        return <article className={contentClass}>info zum wegtogglen</article>;
+      }
+
+      function toggleContent() {
+        setContentVisibility(!contentVisibility);
+      }
+        const [contentVisibility, setContentVisibility] = useState(false);
 
     return (
     <section>
@@ -9,6 +23,8 @@ function Card({name, species, image}) {
             <Namedesign>{name}</Namedesign>
             <div>{species}</div>
             <Imagedesign src={image}/>
+            <button onClick={toggleContent}>Show more</button>
+            <Content contentVisibility={contentVisibility} />
         </Carddesign>
     </section>)
 }
@@ -32,9 +48,8 @@ function Card({name, species, image}) {
 
   const Namedesign = styled.div`
     font-size: 2rem;  
-  `
+  `;
 
 const Imagedesign = styled.img`
     border-radius: 10px;
-     
-`
+     `;
