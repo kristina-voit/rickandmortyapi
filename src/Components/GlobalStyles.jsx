@@ -10,6 +10,7 @@ export default createGlobalStyle`
 }
 
 body {
-    margin: 0
+    margin: 0;
+    text-align: center;
 }
 `;

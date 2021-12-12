@@ -1,60 +1,74 @@
 import styled from "styled-components";
 import { useState } from "react";
-import "../App.css"
+import Button from "./Button";
 
+function Card({ name, species, image, gender, status, origin, location }) {
+  function Content({ contentVisibility }) {
+    if (contentVisibility) {
+      return (
+        <>
+          <div>Gender: {gender}</div>
+          <div>Status: {status}</div>
+          <div>Origin: {origin}</div>
+          <div>Location: {location}</div>
+        </>
+      );
+    } else {
+      return "";
+    }
+  }
 
-function Card({name, species, image, gender, status, origin, location}) {
-    
+  function toggleContent() {
+    setContentVisibility(!contentVisibility);
+  }
+  const [contentVisibility, setContentVisibility] = useState(false);
 
-    function Content({ contentVisibility }) {
-        const contentClass = contentVisibility ? "" : "hidden";
-        
-        return <article className={contentClass}>
-            <div>Gender: {gender}</div>
-            <div>Status: {status}</div>
-            <div>Origin: {origin}</div>
-            <div>Location: {location}</div>
-            </article>;
-      }
-
-      function toggleContent() {
-        setContentVisibility(!contentVisibility);
-      }
-        const [contentVisibility, setContentVisibility] = useState(false);
-
-    return (
+  return (
     <section>
-        <Carddesign>
-            <Namedesign>{name}</Namedesign>
-            <div>{species}</div>
-            <Imagedesign src={image}/>
-            <div><button onClick={toggleContent}>Show more</button></div>
-            <Content contentVisibility={contentVisibility} />
-        </Carddesign>
-    </section>)
+      <Carddesign>
+        <Namedesign>{name}</Namedesign>
+        <Speciesdesign>{species}</Speciesdesign>
+        <Imagedesign src={image} />
+        <div>
+          <Button onClickEvent={toggleContent} />
+        </div>
+        <Content contentVisibility={contentVisibility} />
+      </Carddesign>
+    </section>
+  );
 }
-   
-  export default Card
 
-  const Carddesign = styled.div`
-    border: 2px solid black;
-    border-radius: 20px;
-    box-shadow: 5px 5px 10px black;
-    margin: 2rem;
-    padding-bottom: 1rem;
-    background-color: rgba(250, 128, 114, 0.557);
+export default Card;
 
-    &:hover {
+const Carddesign = styled.div`
+  border: 1px solid rgb(2, 0, 36);
+  border-radius: 10px 0 50px 0;
+  box-shadow: 15px 15px 20px rgb(2, 0, 36);
+  margin: 2rem;
+  padding-bottom: 1rem;
+  max-width: 600px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    153deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 23%,
+    rgba(0, 212, 255, 1) 100%
+  );
+
+  &:hover {
     background-color: green;
   }
-    `;
+`;
 
+const Namedesign = styled.div`
+  font-size: 2rem;
+  color: white;
+`;
 
-
-  const Namedesign = styled.div`
-    font-size: 2rem;  
-  `;
+const Speciesdesign = styled.div`
+  color: #11c92d;
+`;
 
 const Imagedesign = styled.img`
-    border-radius: 10px;
-     `;
+  border-radius: 10%;
+`;
