@@ -10,10 +10,10 @@ function Card({name, species, image, gender, status, origin, location}) {
         const contentClass = contentVisibility ? "" : "hidden";
         
         return <article className={contentClass}>
-            <div>{gender}</div>
-            <div>{status}</div>
-            <div>{origin}</div>
-            <div>{location}</div>
+            <div>Gender: {gender}</div>
+            <div>Status: {status}</div>
+            <div>Origin: {origin}</div>
+            <div>Location: {location}</div>
             </article>;
       }
 
@@ -28,7 +28,7 @@ function Card({name, species, image, gender, status, origin, location}) {
             <Namedesign>{name}</Namedesign>
             <div>{species}</div>
             <Imagedesign src={image}/>
-            <button onClick={toggleContent}>Show more</button>
+            <div><button onClick={toggleContent}>Show more</button></div>
             <Content contentVisibility={contentVisibility} />
         </Carddesign>
     </section>)
