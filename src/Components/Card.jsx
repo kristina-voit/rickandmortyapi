@@ -2,20 +2,16 @@ import styled from "styled-components";
 import { useState } from "react";
 import Button from "./Button";
 
-function Card({ name, species, image, gender, status, origin, location }) {
-  function Content({ contentVisibility }) {
-    if (contentVisibility) {
-      return (
-        <>
-          <div>Gender: {gender}</div>
-          <div>Status: {status}</div>
-          <div>Origin: {origin}</div>
-          <div>Location: {location}</div>
-        </>
-      );
-    } else {
-      return "";
-    }
+function Card({ image, species, name, gender, status, origin, location }) {
+  function Content() {
+    return (
+      <>
+        <div>Gender: {gender}</div>
+        <div>Status: {status}</div>
+        <div>Origin: {origin}</div>
+        <div>Location: {location}</div>
+      </>
+    );
   }
 
   function toggleContent() {
@@ -32,7 +28,7 @@ function Card({ name, species, image, gender, status, origin, location }) {
         <div>
           <Button onClickEvent={toggleContent} />
         </div>
-        <Content contentVisibility={contentVisibility} />
+        {contentVisibility && <Content />}
       </Carddesign>
     </section>
   );
@@ -54,9 +50,14 @@ const Carddesign = styled.div`
     rgba(9, 9, 121, 1) 23%,
     rgba(0, 212, 255, 1) 100%
   );
-
   &:hover {
-    background-color: green;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(
+      135deg,
+      rgba(131, 58, 180, 1) 0%,
+      rgba(253, 29, 29, 1) 36%,
+      rgba(252, 176, 69, 1) 83%
+    );
   }
 `;
 

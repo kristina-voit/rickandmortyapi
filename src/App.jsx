@@ -27,18 +27,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Rick and Morty Characters</h1>
+      <h1>Rick and Morty Wiki</h1>
+      {/* {<div>{characters[0].name}</div>} */}
 
       {/* {characters.map((eachchar, index) => (
-      <>
-      
-      <div key={index}>Index No. {index}</div>
-      <div>Name: {eachchar.name}</div>
-      <div>Species: {eachchar.species}</div>
-      </>
-    )
-    )} */}
-
+        <>
+          <div key={index}>Index No. {index}</div>
+          <div>Name: {eachchar.name}</div>
+          <div>Species: {eachchar.species}</div>
+        </>
+      ))} */}
       {characters.map((char, index) => (
         <Card
           key={index}
