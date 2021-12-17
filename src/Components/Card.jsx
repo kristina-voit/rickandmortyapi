@@ -25,6 +25,9 @@ function Card({ image, species, name, gender, status, origin, location }) {
         <Namedesign>{name}</Namedesign>
         <Speciesdesign>{species}</Speciesdesign>
         <Imagedesign src={image} />
+       {/* <FavouriteIcon onClick={() => addToFavourites(product)}> 
+              {isProductInListOfFavourites(product) ? '⭐️' : '✩'}
+  </FavouriteIcon>*/}
         <div>
           <Button onClickEvent={toggleContent} />
         </div>
