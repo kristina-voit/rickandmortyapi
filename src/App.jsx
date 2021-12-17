@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "./Components/Card";
+import { Route, Routes, NavLink } from "react-router-dom";
 
 import "./App.css";
 
@@ -28,15 +29,24 @@ function App() {
   return (
     <div className="App">
       <h1>Rick and Morty Wiki</h1>
-      {/* {<div>{characters[0].name}</div>} */}
+<NavLink to ="/">Home </NavLink>
+<NavLink to ="favourites">Favourite Characters </NavLink>
+<NavLink to ="episodes">Episodes </NavLink>
 
-      {/* {characters.map((eachchar, index) => (
-        <>
-          <div key={index}>Index No. {index}</div>
-          <div>Name: {eachchar.name}</div>
-          <div>Species: {eachchar.species}</div>
-        </>
-      ))} */}
+
+
+
+
+
+
+
+<Routes>
+  <Route path="/" element={<h2>Welcome to Rick and Morty</h2>}/>
+  <Route path="favourites" element={<Favourite-Characters/>}/>
+  <Route path="episodes" element={<Episodes/>}/>
+</Routes>
+
+
       {characters.map((char, index) => (
         <Card
           key={index}
