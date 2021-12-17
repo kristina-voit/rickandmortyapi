@@ -2,17 +2,22 @@ import styled from "styled-components";
 import { useState } from "react";
 import Button from "./Button";
 
-function Card({ image, species, name, gender, status, origin, location }) {
+function Card({ id, char, image, species, name, gender, status, origin, location, episode, onAddToFavourites, isFavourite}) {
+  //FAV FUNCT IMPORT
+
+
   function Content() {
     return (
       <>
+        <div>ID: {id}</div>
         <div>Gender: {gender}</div>
         <div>Status: {status}</div>
         <div>Origin: {origin}</div>
         <div>Location: {location}</div>
+        <div>Episode: {episode}</div>
       </>
     );
-  }
+  }  
 
   function toggleContent() {
     setContentVisibility(!contentVisibility);
@@ -25,9 +30,9 @@ function Card({ image, species, name, gender, status, origin, location }) {
         <Namedesign>{name}</Namedesign>
         <Speciesdesign>{species}</Speciesdesign>
         <Imagedesign src={image} />
-       {/* <FavouriteIcon onClick={() => addToFavourites(product)}> 
-              {isProductInListOfFavourites(product) ? '⭐️' : '✩'}
-  </FavouriteIcon>*/}
+        <Star onClick={() => onAddToFavourites(char)}>
+            {isFavourite ? "⭐️" : "✩"}
+          </Star>
         <div>
           <Button onClickEvent={toggleContent} />
         </div>
@@ -75,4 +80,8 @@ const Speciesdesign = styled.div`
 
 const Imagedesign = styled.img`
   border-radius: 10%;
+`;
+const Star = styled.span`
+  cursor: pointer;
+  font-size: 2rem;
 `;
