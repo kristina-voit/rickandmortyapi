@@ -1,28 +1,26 @@
 import Card from './Card';
 import { useEffect, useState } from "react";
+import { saveToLocal, loadFromLocal } from '../lib/LocalStorage';
 
-
+//Singular immer verkürzt zu char/ favChar etc.; Plural immer ausgeschrieben
 
 function LoadCharacters() {
-    const [characters, setCharacters] = useState([]);
-    const [favProducts, setFavProducts] = useState([]);
+    const [characters, setCharacters] = useState(loadFromLocal('_CHARACTERS') ?? []);
+    const [favCharacters, setFavCharacters] = useState(loadFromLocal('_FAVOURITES') ?? []);
 
-    function isFavProduct(favProduct) {
-        return favProducts.some((every) => every.id === favProduct.id);
+    const isFavChar = favChar => favCharacters.some((every) => every.id === favChar.id);
+
+    const removeFromFavourites = favChar => favCharacters.filter((every) => every.id !== favChar.id);
+
+    function addToFavourites(favChar) {
+      if (isFavChar(favChar)) {
+        const keepFavourites = removeFromFavourites(favChar);
+        setFavCharacters(keepFavourites);
+      } else {
+        setFavCharacters([...favCharacters, favChar]);
       }
-    
-      function remFromFav(favProduct) {
-        return favProducts.filter((every) => every.id !== favProduct.id);
-      }
-    
-      function addToFavourites(favProduct) {
-        if (isFavProduct(favProduct)) {
-          const keepFavourite = remFromFav(favProduct);
-          setFavProducts(keepFavourite);
-        } else {
-          setFavProducts([...favProducts, favProduct]);
-        }
-      }
+      saveToLocal('_FAVOURITES', favCharacters)
+    }
     
     useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
@@ -38,29 +36,30 @@ function LoadCharacters() {
             origin: character.origin.name,
             location: character.location.name,
         }));
-
+        saveToLocal('_CHARACTERS', allCharacters)
         setCharacters(allCharacters);
+        saveToLocal('_FAVOURITES', []);
         });
     }, []);
 
     return (
         <>
-            {characters.map((char) => (
-                <Card
-                char={char}
-                key={char.id}
-                id={char.id}
-                name={char.name}
-                species={char.species}
-                image={char.image}
-                gender={char.gender}
-                status={char.status}
-                origin={char.origin}
-                location={char.location}
-               onAddToFavourites={addToFavourites}
-               isFavourite={isFavProduct(char)}
-                />
-            ))}
+          {characters.map((char) => (
+              <Card
+              char={char}
+              key={char.id}
+              id={char.id}
+              name={char.name}
+              species={char.species}
+              image={char.image}
+              gender={char.gender}
+              status={char.status}
+              origin={char.origin}
+              location={char.location}
+              onAddToFavourites={addToFavourites}
+              isFav={isFavChar(char)}
+              />
+          ))}
         </>    
     )
 }

@@ -2,10 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import Button from "./Button";
 
-function Card({ id, char, image, species, name, gender, status, origin, location, episode, onAddToFavourites, isFavourite}) {
-  //FAV FUNCT IMPORT
-
-
+function Card({ id, char, image, species, name, gender, status, origin, location, episode, onAddToFavourites, isFav}) {
+  
   function Content() {
     return (
       <>
@@ -31,7 +29,7 @@ function Card({ id, char, image, species, name, gender, status, origin, location
         <Speciesdesign>{species}</Speciesdesign>
         <Imagedesign src={image} />
         <Star onClick={() => onAddToFavourites(char)}>
-            {isFavourite ? "⭐️" : "✩"}
+            {isFav ? "⭐️" : "✩"}
           </Star>
         <div>
           <Button onClickEvent={toggleContent} />

@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { Route, Routes, NavLink } from "react-router-dom";
 import "./App.css";
 import Characters from './pages/Characters'
@@ -13,10 +11,6 @@ function App() {
 <NavLink to ="characters">Characters </NavLink>
 <NavLink to ="favourites">Favourites </NavLink>
 <NavLink to ="episodes">Episodes </NavLink>
-
-
-
-
 
 <Routes>
   <Route path="/" element={<h2>Welcome to Rick and Morty</h2>}/>
