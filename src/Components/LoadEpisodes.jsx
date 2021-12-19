@@ -36,6 +36,7 @@ function LoadEpisode() {
           name: episode.name,
           air_date: episode.air_date,
           epsiode_no: episode.episode,
+          characters: episode.characters,
         }));
         saveToLocal("EPISODES", allEpisodes);
         setEpisodes(allEpisodes);
@@ -52,8 +53,9 @@ function LoadEpisode() {
           name={episode.name}
           air_date={episode.air_date}
           episode_no={episode.epsiode_no}
-          onAddToFavourites={addToFavourites}
-          isFav={isFavEpisode(episode)}
+        characters={episode.characters}
+          
+  
         />
       ))}
     </>
