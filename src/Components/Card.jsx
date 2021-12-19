@@ -2,8 +2,20 @@ import styled from "styled-components";
 import { useState } from "react";
 import Button from "./Button";
 
-function Card({ id, char, image, species, name, gender, status, origin, location, episode, onAddToFavourites, isFav}) {
-  
+function Card({
+  id,
+  char,
+  image,
+  species,
+  name,
+  gender,
+  status,
+  origin,
+  location,
+  episode,
+  onAddToFavourites,
+  isFav,
+}) {
   function Content() {
     return (
       <>
@@ -15,7 +27,7 @@ function Card({ id, char, image, species, name, gender, status, origin, location
         <div>Episode: {episode}</div>
       </>
     );
-  }  
+  }
 
   function toggleContent() {
     setContentVisibility(!contentVisibility);
@@ -29,8 +41,8 @@ function Card({ id, char, image, species, name, gender, status, origin, location
         <Speciesdesign>{species}</Speciesdesign>
         <Imagedesign src={image} />
         <Star onClick={() => onAddToFavourites(char)}>
-            {isFav ? "⭐️" : "✩"}
-          </Star>
+          {isFav ? "⭐️" : "✩"}
+        </Star>
         <div>
           <Button onClickEvent={toggleContent} />
         </div>
@@ -46,6 +58,7 @@ const Carddesign = styled.div`
   border: 1px solid rgb(2, 0, 36);
   border-radius: 10px 0 50px 0;
   box-shadow: 15px 15px 20px rgb(2, 0, 36);
+  color: white;
   margin: 2rem;
   padding-bottom: 1rem;
   max-width: 600px;
