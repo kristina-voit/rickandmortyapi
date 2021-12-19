@@ -6,7 +6,6 @@ function CardEpisode({
   name,
   air_date,
   episode_no,
-  episode,
   characters,
 }) {
   function Content() {
@@ -15,6 +14,7 @@ function CardEpisode({
         <br></br>
         <div>Air Date: {air_date}</div>
         <div>Characters: {characters}</div>
+        <img src="https://help.redbubble.com/hc/article_attachments/360002309526/Rick_and_Morty_-_logo__English_.png" width="200px" ></img>
       </>
     );
   }
