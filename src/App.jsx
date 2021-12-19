@@ -3,11 +3,13 @@ import "./App.css";
 import Characters from "./pages/Characters";
 import Episodes from "./pages/Episodes";
 import Favourites from "./pages/Favourites";
+import Button from "./Components/Button";
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Rick and Morty Wiki</h1>
+      <img src="https://help.redbubble.com/hc/article_attachments/360002309526/Rick_and_Morty_-_logo__English_.png"></img><br></br>
       <NavLink to="/">Home </NavLink>
       <NavLink to="characters">Characters </NavLink>
       <NavLink to="favourites">Favourites </NavLink>

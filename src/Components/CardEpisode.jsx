@@ -3,18 +3,18 @@ import { useState } from "react";
 import Button from "./Button";
 
 function CardEpisode({
-  id,
   name,
   air_date,
   episode_no,
   episode,
-  onAddToFavourites,
-  isFav,
+  characters,
 }) {
   function Content() {
     return (
       <>
-        <div>Additional Content like characters shown in this Episode</div>
+        <br></br>
+        <div>Air Date: {air_date}</div>
+        <div>Characters: {characters}</div>
       </>
     );
   }
@@ -27,13 +27,10 @@ function CardEpisode({
   return (
     <section>
       <Carddesign>
+        <br></br>
         <Speciesdesign>{episode_no}</Speciesdesign>
-        <Namedesign>{name}</Namedesign>
-
-        <div>{air_date}</div>
-        <Star onClick={() => onAddToFavourites(episode)}>
-          {isFav ? "⭐️" : "✩"}
-        </Star>
+        
+        <br></br><Namedesign>{name}</Namedesign>
         <div>
           <Button onClickEvent={toggleContent} />
         </div>
@@ -49,7 +46,7 @@ const Carddesign = styled.div`
   border: 1px solid rgb(2, 0, 36);
   border-radius: 10px 0 50px 0;
   box-shadow: 15px 15px 20px rgb(2, 0, 36);
-  margin: 2rem;
+  margin: 10rem;
   padding-bottom: 1rem;
   max-width: 600px;
   background: rgb(2, 0, 36);
@@ -71,6 +68,7 @@ const Carddesign = styled.div`
 `;
 
 const Namedesign = styled.div`
+font-family: fantasy;
   font-size: 2rem;
   color: white;
 `;
