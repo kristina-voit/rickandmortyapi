@@ -6,6 +6,7 @@ function CardEpisode({
   name,
   air_date,
   episode_no,
+  episode,
   characters,
 }) {
   function Content() {
