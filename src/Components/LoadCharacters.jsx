@@ -7,6 +7,7 @@ import { saveToLocal, loadFromLocal } from '../lib/LocalStorage';
 function LoadCharacters() {
     const [characters, setCharacters] = useState(loadFromLocal('_CHARACTERS') ?? []);
     const [favCharacters, setFavCharacters] = useState(loadFromLocal('_FAVOURITES') ?? []);
+    useEffect(() => saveToLocal('_FAVOURITES', favCharacters), [favCharacters])
 
     const isFavChar = favChar => favCharacters.some((every) => every.id === favChar.id);
 
@@ -18,8 +19,8 @@ function LoadCharacters() {
         setFavCharacters(keepFavourites);
       } else {
         setFavCharacters([...favCharacters, favChar]);
+        //console.log(favCharacters)
       }
-      saveToLocal('_FAVOURITES', favCharacters)
     }
     
     useEffect(() => {
@@ -38,7 +39,6 @@ function LoadCharacters() {
         }));
         saveToLocal('_CHARACTERS', allCharacters)
         setCharacters(allCharacters);
-        saveToLocal('_FAVOURITES', []);
         });
     }, []);
 
