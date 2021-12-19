@@ -25,9 +25,13 @@ function Card({ id, char, image, species, name, gender, status, origin, location
   return (
     <section>
       <Carddesign>
+        <br></br>
         <Namedesign>{name}</Namedesign>
+        <br></br>
         <Speciesdesign>{species}</Speciesdesign>
+        <br></br>
         <Imagedesign src={image} />
+        <br></br>
         <Star onClick={() => onAddToFavourites(char)}>
             {isFav ? "⭐️" : "✩"}
           </Star>
@@ -46,7 +50,7 @@ const Carddesign = styled.div`
   border: 1px solid rgb(2, 0, 36);
   border-radius: 10px 0 50px 0;
   box-shadow: 15px 15px 20px rgb(2, 0, 36);
-  margin: 2rem;
+  margin: 10rem;
   padding-bottom: 1rem;
   max-width: 600px;
   background: rgb(2, 0, 36);
@@ -69,6 +73,7 @@ const Carddesign = styled.div`
 
 const Namedesign = styled.div`
   font-size: 2rem;
+  font-family: fantasy;
   color: white;
 `;
 
