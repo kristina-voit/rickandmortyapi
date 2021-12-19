@@ -16,10 +16,6 @@ function App() {
         <Route path="/" element={<h2>Welcome to Rick and Morty</h2>} />
         <Route path="characters" element={<Characters />} />
         <Route path="episodes" element={<Episodes />} />
-
-        {/*<Route path="characters" element={<Characters/>}/>
-  <Route path="favourites" element={<Favourites/>}/>
- <Route path="episodes" element={<Episodes/>}/>*/}
       </Routes>
     </div>
   );

@@ -11,24 +11,18 @@ function CardEpisode({
   onAddToFavourites,
   isFav,
 }) {
-  console.log(episode);
-  // function Content() {
-  //   return (
-  //     <>
-  //       <div>ID: {id}</div>
-  //       <div>Gender: {gender}</div>
-  //       <div>Status: {status}</div>
-  //       <div>Origin: {origin}</div>
-  //       <div>Location: {location}</div>
-  //       <div>Episode: {episode}</div>
-  //     </>
-  //   );
-  // }
+  function Content() {
+    return (
+      <>
+        <div>Additional Content like characters shown in this Episode</div>
+      </>
+    );
+  }
 
-  // function toggleContent() {
-  //   setContentVisibility(!contentVisibility);
-  // }
-  // const [contentVisibility, setContentVisibility] = useState(false);
+  function toggleContent() {
+    setContentVisibility(!contentVisibility);
+  }
+  const [contentVisibility, setContentVisibility] = useState(false);
 
   return (
     <section>
@@ -37,13 +31,13 @@ function CardEpisode({
         <Namedesign>{name}</Namedesign>
 
         <div>{air_date}</div>
-        {/* <Star onClick={() => onAddToFavourites(char)}>
-            {isFav ? "⭐️" : "✩"}
-          </Star>
+        <Star onClick={() => onAddToFavourites(episode)}>
+          {isFav ? "⭐️" : "✩"}
+        </Star>
         <div>
           <Button onClickEvent={toggleContent} />
         </div>
-        {contentVisibility && <Content />} */}
+        {contentVisibility && <Content />}
       </Carddesign>
     </section>
   );

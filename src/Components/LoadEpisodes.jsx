@@ -7,22 +7,22 @@ import { saveToLocal, loadFromLocal } from "../lib/LocalStorage";
 function LoadEpisode() {
   const [episodes, setEpisodes] = useState(loadFromLocal("_EPISODES") ?? []);
   const [favEpisodes, setFavEpisodes] = useState(
-    loadFromLocal("_FAVOURITES") ?? []
+    loadFromLocal("_FAV_EPISODES") ?? []
   );
   useEffect(() => saveToLocal("_FAV_EPISODES", favEpisodes), [favEpisodes]);
 
-  const isFavEpisode = (favChar) =>
-    favEpisodes.some((every) => every.id === favChar.id);
+  const isFavEpisode = (favEpisode) =>
+    favEpisodes.some((every) => every.id === favEpisode.id);
 
-  const removeFromFavourites = (favChar) =>
-    favEpisodes.filter((every) => every.id !== favChar.id);
+  const removeFromFavourites = (favEpisode) =>
+    favEpisodes.filter((every) => every.id !== favEpisode.id);
 
-  function addToFavourites(favChar) {
-    if (isFavEpisode(favChar)) {
-      const keepFavourites = removeFromFavourites(favChar);
+  function addToFavourites(favEpisode) {
+    if (isFavEpisode(favEpisode)) {
+      const keepFavourites = removeFromFavourites(favEpisode);
       setFavEpisodes(keepFavourites);
     } else {
-      setFavEpisodes([...favEpisodes, favChar]);
+      setFavEpisodes([...favEpisodes, favEpisode]);
       //console.log(favEpisodes)
     }
   }
